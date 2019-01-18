@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .flex{ display: flex;}
+        .flex-column{ flex-direction: column;}
+        .flex-row{ flex-direction: row;}
+        .flex-column-r{ flex-direction:column-reverse;}
+        .flex-row-r{ flex-direction: row-reverse;}
+        .flex-wrap{ flex-wrap: wrap;}
+        .flex-nowrap{ flex-wrap: nowrap;}
+        .flex-align-left{ justify-content: flex-start;}
+        .flex-align-right{ justify-content: flex-end;}
+        .flex-align-center{ justify-content:center;}
+        .box{ border: 1px solid #ddd; padding: 5px;}
+        .inner-box{ height:50px; width:50px; background-color:aquamarine; margin: 5px 5px;}
+    </style>
+</head>
+<body>
+    <div id="element"></div>
+<script src="js/jquery-3.3.1.min.js"></script>    
+<script>
+; (function () { 
+    var ElementControler = function(){
+        this.eles = null;
+    }
+    ElementControler.prototype.render = function(ele,context){
+        this.eles = ele;
+        context.append(this.eles.Ele);
+    }
+    function Ele(props,state,tag){
+        this.props = props;
+        this.state = state;
+        this.modules = [];
+        tag = tag || 'div';
+        this.Ele = document.createElement(tag);
+        this.childrens = [];
+        this.init();
+    }
+    Ele.prototype.init = function(){
+        this.beforeRender && this.beforeRender();
+        this._render();
+        this.renerChildrens && this.renerChildrens();
+        this.afterRender && this.afterRender();
+        this.bindEvent && this.bindEvent();
+        this.loadPlug && this.loadPlug();
+    };
+    Ele.prototype.setState = function(state){
+        $.extend(this.state,state);
+        this._render();
+        this.renderedReBind();
+    };
+    Ele.prototype._render = function(){
+        var htmls = [];
+        var renderhtml = this.render();
+        this.Ele.innerHTML = renderhtml;
+    }
+    Ele.prototype.bindEvent= function(){
+        var self = this;
+        $(this.Ele).find('[data-bindevent]').each(function(){
+            var event = $(this).attr('data-bindevent');
+            if(event && ~event.indexOf(':')){
+                var _list = event.split(':');
+                $(this).on(_list[0],function(e){
+                    if(self[_list[1]]){
+                        self[_list[1]].call(this,e,self,self.Ele);
+                    }
+                });
+            }
+        });
+    }
+    Ele.prototype.loadPlug= function(){
+        var len=this.modules.length;
+        if(len>0){
+            for(var i=0;i<len;i++){
+                var module = this.modules[i];
+                if(module.init){
+                    module.init(this);
+                }
+                if(module.start){
+                    module.start(this);
+                }
+                if(module.load){
+                    module.load(this);
+                }
+                if(module.end){
+                    module.end(this);
+                }
+            }
+        }
+    }
+    
+    window.ElementControler = ElementControler;
+    window.Ele = Ele;
+})();
+    $(function(){
+        function Button(props,state){
+            Ele.apply(this,arguments);
+            console.log();
+        }
+        $.extend(Button.prototype,Ele.prototype,{
+            showAll:function(){
+                alert(1111);
+            },
+            render:function(){
+                var props = this.props;
+                return '<div><a data-bindevent="click:showAll">'+props.text+'</a></div>'
+            }
+        });
+        
+        function List(props,state,tag){
+            Ele.apply(this,arguments);
+            
+        }
+        $.extend(List.prototype,Ele.prototype,{
+            beforeRender:function(){
+                this.childrens = this.props.datas;
+            },
+            renerChildrens:function(){
+                var self = this;
+                var frameele = document.createDocumentFragment();
+                var lis = $.each(this.childrens,function(i,n){
+                    var item = new ListItem(n,null,'li');
+                    frameele.appendChild(item.Ele);
+                });
+                self.Ele.appendChild(frameele);
+                
+            },
+            render:function(){
+                var props = this.props;
+                return '';
+            }
+        });
+        
+        function ListItem(props,state){
+            Ele.apply(this,arguments);
+            console.log();
+        }
+        $.extend(ListItem.prototype,Ele.prototype,{
+            showConsole:function(e,obj){
+                console.log(obj.props.title);
+            },
+            render:function(){
+                var props = this.props;
+                return '<a data-bindevent="click:showConsole">'+props.title+'</a>';
+            }
+        });
+        
+        
+        var elecontrol = new ElementControler();
+        var __cotext = $('#element');
+        var button = new Button({text:'点击'});
+        var datas = [];
+        for(var i=0;i<1000;i++){
+            datas.push({title:'title'+i});
+        }
+        
+        elecontrol.render(button,__cotext);
+        console.time('render');
+        var list = new List({datas:datas},null,'ul');
+        console.timeEnd('render');
+        elecontrol.render(list,__cotext);
+        
+    });
+    </script>
+</body>
+</html>
