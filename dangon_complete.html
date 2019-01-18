@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{ margin: 0; padding: 0;}
+        .flex{ display: flex;}
+        .flex-column{ flex-direction: column;}
+        .flex-row{ flex-direction: row;}
+        .flex-column-r{ flex-direction:column-reverse;}
+        .flex-row-r{ flex-direction: row-reverse;}
+        .flex-wrap{ flex-wrap: wrap;}
+        .flex-nowrap{ flex-wrap: nowrap;}
+        .flex-align-left{ justify-content: flex-start;}
+        .flex-align-right{ justify-content: flex-end;}
+        .flex-align-center{ justify-content:center;}
+        .box{ border: 1px solid #ddd; padding: 5px;}
+        .inner-box{ height:50px; width:50px; background-color:aquamarine; margin: 5px 5px;}
+        .open3D{ transform: translate3d(0,0,0)}
+        canvas{ cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div id="element">
+        <div id="title"></div>
+        <div id="content"></div>
+    </div>
+    
+<script>
+ var data = [
+        [
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '83.65'
+            },
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '99'
+            },
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '1'
+            },
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '10'
+            },
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            }
+        ],
+        [
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '78'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '98'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            }
+        ],
+        [
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '78'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '98'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            }
+        ],
+        [
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '78'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '98'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            }
+        ],
+        [
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '78'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '98'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            }
+        ],
+        [
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '83.65'
+            },
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '99'
+            },
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '1'
+            },
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '10'
+            },
+            {
+                planGroup: '总装01-M23',
+                resource: 'PDAJSDQ101',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            }
+        ],
+        [
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '78'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '98'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            }
+        ],
+        [
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '78'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '98'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            }
+        ],
+        [
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '78'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '98'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            }
+        ],
+        [
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '78'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '87'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '98'
+            },
+            {
+                planGroup: '总装01-M24',
+                resource: 'PDAJSDQ102',
+                date: '2018-12-3',
+                resourceType: 'xx1',
+                resourceAvailableTime: '11',
+                resourceWorkingTime: '13',
+                val: '103.65'
+            }
+        ]
+
+    ];
+//reQ core
+;(function(){
+    var _toString = function(){return Object.prototype.toString;}
+    function isObject(obj){
+        return typeof obj==='object';
+    }
+    function isNumber(str){
+        return _toString.call(str)==='[object Number]';
+    }
+    function isArray(arr){
+        if(isObject(arr)){
+            return _toString.call(arr) ==='[object Array]';
+        }
+        return false;
+    }
+    var reQ = new function(){
+        var self = this;
+        this.__doid = 0;
+        this.inherit = function(child,parent){
+            child.prototype = Object.create(parent.prototype);
+            child.prototype.constructor = child;
+            child.prototype._super = parent.prototype;
+        }
+        this.class = function(namepath,params){
+            var contrs = params.constructor;
+            var _parent = params.extends;
+            var ns,cls,name;
+            cls = function(){
+                _parent && _parent.apply(this,arguments);
+               contrs && contrs.apply(this,arguments);
+            }
+            _parent && self.inherit(cls,_parent);
+            for(var k in params){
+                if(k=='constructor' || k=='extends')continue;
+                cls.prototype[k] = params[k];
+            }
+            if(namepath){
+                ns = namepath.split('.');
+                name = ns[ns.length-1];
+                for(var i=0,len=ns.length;i<len;i++){
+                    if(ns[i]!==name){
+                        ns[i]=self[ns[i]]
+                        if(!ns[i]){
+                            ns[i] = {};
+                        }
+                    }
+                }
+                self[name] = cls;
+                cls.prototype.class = namepath;
+            }
+            return cls;
+        }
+        var modules = [];
+        this.install = function(name,module){
+            modules.push({name:name,module:module});
+        }
+        this.getModules = function(){
+            return modules;
+        }
+    }
+    reQ.isObject = isObject;
+    reQ.isNumber = isNumber;
+    reQ.isArray = isArray;
+    
+    
+   window.reQ = reQ;
+})();
+//reQ.extend
+;(function(){
+    var isObject = reQ.isObject;
+    var isNumber = reQ.isNumber;
+    var isArray = reQ.isArray;
+    const baseClone = (targets)=>{
+        let res = {};
+        if(isArray(targets)){
+            res = [];
+            for(var i=0,len=targets.length;i<len;i++){
+                var item = targets[i];
+                res.push(item);
+            }
+        }else if(isObject(targets)){
+            for(var i in targets){
+                if(targets.hasOwnProperty(i)){
+                    var item = targets[i];
+                    res[i] = item;
+                }
+            }
+        }
+        return res;
+    }
+    const deepClone = (targets)=>{
+        let res = {};
+        if(isArray(targets)){
+            res = [];
+            for(var i=0,len=targets.length;i<len;i++){
+                var item = targets[i];
+                if(isObject(item)){
+                    res.push(deepClone(item))
+                }else{
+                    res.push(item);
+                }
+            }
+        }else if(isObject(targets)){
+            for(var i in targets){
+                if(targets.hasOwnProperty(i)){
+                    var item = targets[i];
+                    if(isObject(item)){
+                        res[i] = deepClone(item);
+                    }else{
+                       res[i] = item;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    function deepExtend(target,source){
+        if(isArray(source)){
+            target = target || [];
+            for(var i=0,len=source.length;i<len;i++){
+                var item = source[i];
+                if(typeof target[i]==='undefined'){
+                    if(isArray(item)){
+                        target[i] = [];
+                    }else{
+                        target[i] = {};
+                    }
+                }
+                if(isObject(item)){
+                    deepExtend(target[i],source[i]);
+                }else{
+                   target[i]=source[i];
+                }
+            }
+        }
+        else  if(isObject(source)){
+            target = target || {};
+            for(var i in source){
+                if(source.hasOwnProperty(i)){
+                    var item = source[i];
+                    if(typeof target[i]==='undefined'){
+                        if(isArray(item)){
+                            target[i] = [];
+                        }else{
+                            target[i] = {};
+                        }
+                    }
+                    if(isObject(item)){
+                        deepExtend(target[i],source[i]);
+                    }else{
+                       target[i] = source[i];
+                    }
+                }
+            }
+        }
+    }
+    function baseExtend(target,source){
+        if(isArray(source)){
+            target = target || [];
+            for(var i=0,len=source.length;i<len;i++){
+                var item = source[i];
+                target[i]=item;
+            }
+        }
+        else if(isObject(source)){
+            target = target || {};
+            for(var i in source){
+                if(source.hasOwnProperty(i)){
+                    var item = source[i];
+                    target[i] = item;
+                }
+            }
+        }
+    }
+    function _extend(){
+        var caller = arguments.callee.caller;
+        var args = [].slice.call(arguments);
+        var firstArg = args[0],res = {};
+        if(firstArg && firstArg===true){
+            for(var len=args.length-1,i=len;i>=1;i--){
+                var obj = args[i];
+                if(isArray(obj)){
+                    res = [];
+                    for(var j=0,jlen=obj.length;j<jlen;j++){
+                        var jitem = obj[j];
+                        deepExtend(res,obj);
+                    } 
+                }else if(isObject(obj)){
+                  for(var j in obj){
+                        if(obj.hasOwnProperty(j)){
+                            var jitem = obj[j];
+                            deepExtend(res,obj);
+                        }
+                    }   
+                }
+            }
+        }else{
+            for(var len=args.length-1,i=len;i>=1;i--){
+                var obj = args[i];
+                if(isArray(obj)){
+                    res = [];
+                    for(var j=0,jlen=obj.length;j<jlen;j++){
+                        var jitem = obj[j];
+                        baseExtend(res,obj);
+                    } 
+                }else if(isObject(obj)){
+                  for(var j in obj){
+                        if(obj.hasOwnProperty(j)){
+                            var jitem = obj[j];
+                            baseExtend(res,obj);
+                        }
+                    }   
+                }
+            }
+        }
+        return res;
+    }
+    reQ.extend = _extend;
+    reQ.ext = baseExtend;
+    
+    //obSubscribe
+    reQ.class('reQ.obSubscribe',{
+            constructor:function(){
+                this.listeners = [];
+                //[listener,context,isOne]
+            },
+            on:function(type,listener,context){
+                if(!this.listeners[type])this.listeners[type]=[];
+                this.listeners[type].push([listener,context||this]);
+            },
+            off:function(type,listener,context){
+                var liss = this.listeners[type];
+                var self = this;
+                if(liss.length>0){
+                    this.listeners[type] = liss.filter(function(_listener){
+                        return ((context||self===_listener[1]) && ((listener&& (_listener[0]==listener?false:true)))||!listener);
+                    });
+                }
+            },
+            emit:function(){
+                var args = [].slice.apply(arguments);
+                var type = args[0];
+                var liss = this.listeners[type];
+                var params = [];
+                for(var j=1,jlen=args.length;j<jlen;j++){
+                    params.push(args[j]);
+                }
+                if(liss && liss.length>0){
+                    for(var i=0,len=liss.length;i<len;i++){
+                        var listen = liss[i];
+                        var listener = listen[0]
+                        var context = listen[1];
+                        if(context.events){
+                            if(!context.events.disabled){
+                                listener && listener.apply(context,params);
+                            }
+                        }else{
+                            listener && listener.apply(context,params);
+                        }
+                    }
+                }
+            },
+            emit_called:function(){
+                var args = [].slice.apply(arguments);
+                var type = args[0];
+                var liss = this.listeners[type];
+                var params = [];
+                for(var j=1,jlen=args.length;j<jlen;j++){
+                    params.push(args[j]);
+                }
+                if(liss && liss.length>0){
+                    for(var i=0,len=liss.length;i<len;i++){
+                        var listen = liss[i];
+                        var listener = listen[0]
+                        var context = listen[1];
+                        if(context.events){
+                            if(!context.events.disabled){
+                                listener && listener.call(context,params);
+                                context.__called = true;
+                            }
+                        }else{
+                            listener && listener.call(context,params);
+                            context.__called = true;
+                        }
+                    }
+                    this.listeners[type] = liss.filter(function(listener){
+                        return !listener[1].__called;
+                    });
+                }
+                
+            },
+            emit_pointer:function(type,input,e,xy,xys){
+                var args = [].slice.apply(arguments);
+                var type = args[0];
+                var liss = this.listeners[type];
+                
+                if(liss && liss.length>0){
+                    for(var i=0,len=liss.length;i<len;i++){
+                        var listen = liss[i];
+                        var listener = listen[0]
+                        var context = listen[1];
+                        if(context.hitTest(xy) && !context.events.disabled &&context.getRendered()){
+                            listener && listener.call(context,input,e);
+                           // context.__called = true;
+                        }
+                    }
+                    this.listeners[type] = liss.filter(function(listener){
+                        return !listener[1].__called;
+                    });
+                }
+                
+            }
+    });
+    
+    function InputListener(data) {
+        this.eventMap = {};
+        reQ.ext(this,data);
+    };
+    InputListener.prototype = {
+        /**
+         * 保存事件。类型相同覆盖
+         * @param  {String} type 事件名
+         * @param  {Object} e 事件对象
+         */
+        setEvent:function(type,e){
+            this.eventMap[type] = e;
+        },
+        /**
+         * 每帧调用
+         */
+        clear:function(){
+            for(var k in this.eventMap){
+                this.eventMap[k] = null;
+            }
+            this.eventMap = {};
+        },
+        clearType:function(type){
+            for(var k in this.eventMap){
+                if(k==type){
+                    this.eventMap[k] = null;
+                    delete this.eventMap[type];
+                    break;
+                }
+            }
+            
+        },
+        start:function(viewshow){
+            this.onInit(viewshow);
+        },
+        scan:function(viewshow){
+            this.onScan(viewshow);
+        }
+    };
+    reQ.InputListener = InputListener;
+
+    //Events
+    function Events(displayobject){
+        this.disabled = false;
+        this.obj = displayobject;
+        this.onpointdown = function(cbk){
+            this.obj.object._pointerSubscribe.on('pointerdown',cbk,this.obj);
+        }
+        this.onpointmove = function(cbk){
+            this.obj.object._pointerSubscribe.on('pointermove',cbk,this.obj);
+        }
+        this.onpointup = function(cbk){
+            this.obj.object._pointerSubscribe.on('pointerup',cbk,this.obj);
+        }
+        this.onpointcancel = function(cbk){
+            this.obj.object._pointerSubscribe.on('pointercancel',cbk,this.obj);
+        }
+        
+        
+    }
+    reQ.Events = Events;
+    
+    //reQ.Point
+    reQ.class('reQ.Point',{
+        constructor:function(x,y){
+            this.x = x;
+            this.y = y;
+        }
+    });
+})(); 
+//    reQ.requestAnimFrame 
+//    reQ.cancelAnimFrame 
+//    reQ.transitionEvent 
+;(function(){
+    var requestAnimFrame = (function(){
+      return  window.requestAnimationFrame       ||
+              window.webkitRequestAnimationFrame ||
+              window.mozRequestAnimationFrame    ||
+              function( callback ){
+                window.setTimeout(callback, 1000 / 60);
+              };
+    })();
+    var cancelAnimFrame = (function(){
+      return  window.cancelAnimationFrame        ||
+              window.webkitCancelAnimationFrame ||
+              window.mozCancelAnimationFrame    ||
+              function( callback ){
+                window.clearTimeout(callback);
+              };
+    })();
+    var transitionEvent = (function(){
+       var t,
+       el = document.createElement('surface'),
+       transitions = {
+         'transition':'transitionend',
+         'OTransition':'oTransitionEnd',
+         'MozTransition':'transitionend',
+         'WebkitTransition':'webkitTransitionEnd'
+       }
+
+       for(t in transitions){
+           if( el.style[t] !== undefined ){
+               return transitions[t];
+           }
+       }
+   })();
+
+    reQ.requestAnimFrame = requestAnimFrame;
+    reQ.cancelAnimFrame = cancelAnimFrame;
+    reQ.transitionEvent = transitionEvent;
+})();
+//reQ.World
+;(function(){
+    reQ.class('reQ.World',{
+        constructor:World,
+        extends:reQ.obSubscribe,
+        start:function(){
+            var self = this;
+           // setInterval(function(){
+                console.time('word')
+                self.scenesManager.start();
+                console.timeEnd('word')
+           // },16.77);
+            
+        }
+    })
+    function World(w,h,context){
+        this.scenesManager = new reQ.ViewShow(w,h);
+        this.ctx = this.scenesManager.ctx;
+        this.canvas = this.scenesManager.canvas;
+        this.scenesManager.renderTo(context);
+       // this.add = new baseDisplayFactoryProxy(this);
+       // this.objects = new baseDisplayFactory(this);
+    }
+    
+})();
+//reQ.baseDisplayFactory //暂时未用到
+;(function(){
+   
+    function baseDisplayFactory(world){
+        this.map = {};
+        this.world = world;
+    }
+    baseDisplayFactory.prototype.register = function(alias,constructor){
+        this.map[alias] = constructor;
+        this.world.add[alias] = function(data){
+            return this.createDisplay(alias,constructor);
+        }
+    }
+    
+    reQ.baseDisplayFactory = baseDisplayFactory;
+    
+    function baseDisplayFactoryProxy(world){
+        this.world = world;
+        this.createDisplay = function(alias,data){
+            data.world = this.world;
+            var instance = new this.world.objects.map[type](data);
+            // instance.game = this.game;
+            this.world.add(instance);
+            return instance;
+        }
+    }
+    
+    
+    reQ.baseDisplayFactoryProxy = baseDisplayFactoryProxy;
+})();
+//reQ.ViewShow
+;(function(){
+    var _poniterPrototype = {
+        onInit:function(viewshow){
+            this.viewshow = viewshow;
+            this.canvas = viewshow.getCanvas();
+            this.startPoint = {x:0,y:0};
+            this.currentPoint = {x:0,y:0};
+            this.p_d = this.pointerdown.bind(this);
+            this.p_m = this.pointermove.bind(this);
+            this.p_u = this.pointerup.bind(this);
+            
+            
+            this.t_s = this.pointertouchstart.bind(this);
+            this.t_m = this.pointertouchmove.bind(this);
+            this.t_e = this.pointertouchend.bind(this);
+            this.t_c = this.pointertouchcancel.bind(this);
+            
+            this.bindMouse();
+        }
+        ,bindMouse:function(){
+            this.canvas.addEventListener('mousedown',this.p_d,true);
+            this.canvas.addEventListener('mousemove',this.p_m,true);
+            this.canvas.addEventListener('mouseup',this.p_u,true);
+            
+        }
+        ,bindTouch:function(){
+            this.canvas.addEventListener('touchstart',this.t_s,true);
+            this.canvas.addEventListener('touchmove',this.t_m,true);
+            this.canvas.addEventListener('touchend',this.t_e,true);
+            this.canvas.addEventListener('touchcancel',this.t_c,true);
+        },
+        
+        onScan:function(viewshow){
+            var eventSignal = this.viewshow._pointerSubscribe;
+            var input = this.viewshow.input.pointer;
+            //console.log(input)
+            var isDown = false,
+            isUp = false,
+            isMove = false,
+            e = null;
+            if(this.eventMap['down']){
+                isDown = true;
+                e = this.eventMap['down'];
+                
+            }
+            if(this.eventMap['up']){
+                isUp = true;
+                e = this.eventMap['up'];
+            }
+            if(this.eventMap['move']){
+                isMove = true;
+                e = this.eventMap['move'];
+                
+            }
+            if(this.eventMap['tap']){
+                e = this.eventMap['tap'];
+            }
+            if(this.eventMap['dbltap']){
+                e = this.eventMap['dbltap'];
+            }
+            if(this.eventMap['enterstage']){
+                e = this.eventMap['enterstage'];
+            }
+            if(this.eventMap['leavestage']){
+                e = this.eventMap['leavestage'];
+            }
+            if(this.eventMap['cancel']){
+                e = this.eventMap['cancel'];
+            }
+
+//            input.isDown = isDown;
+//            input.isUp = isUp;
+//            input.isMove = isMove;
+           // input.isPressing = this.pressing || false;
+           // input.duration = this.pressStartTime==0?0:Date.now() - this.pressStartTime;
+            input.e = e;
+            input.touches = [];
+            input.position = input.position?input.position:{};
+
+            if(!e)return;
+            input.position.x = e.clientX;
+            input.position.y = e.clientY;
+            if(this.eventMap['down']){
+               // console.log('down',input)
+                input.startPoint = this.startPoint =input.position;
+                eventSignal.emit_pointer('pointerdown',input,e,input.position,input.touches);
+            }
+            if(this.eventMap['move']){
+               // console.log('move',input)
+                input.currentPoint = this.currentPoint =input.position;
+                eventSignal.emit_pointer('pointermove',input,e,input.position,input.touches);
+            }
+            if(this.eventMap['up']){
+               // console.log('up',input)
+                eventSignal.emit_pointer('pointerup',input,e,input.position,input.touches);
+            }
+        },
+        setInput:function(){
+        
+        }
+        ,pointerdown:function(e){
+            this.setEvent('down',e);
+            this.scan();
+           // this.clear();
+        }
+        ,pointermove:function(e){
+            this.setEvent('move',e);
+            this.scan();
+           // this.clear();
+        }
+        ,pointerup:function(e){
+            this.setEvent('up',e);
+            this.scan();
+          //  this.clear();
+        }
+        ,pointertouchstart:function(){}
+        ,pointertouchmove:function(){}
+        ,pointertouchend:function(){}
+        ,pointertouchcancel:function(){}
+    }
+    reQ.class('reQ.ViewShow',{
+        constructor:ViewShow,
+        extends:reQ.obSubscribe,
+        init : function(){
+            
+           // this.bindEvent();
+        },
+        addScenes : function(scenes){
+            if(this.ctx){
+                scenes.ctx = this.ctx;
+            }
+            scenes.canvas = this.object;
+            scenes.object = this;
+            this.scenes.push(scenes);
+        },
+        getCanvas:function(){
+            return this.ctx.canvas;
+        },
+        router : function(){
+
+        },
+        clearView:function(){
+            this.ctx.clearRect(0,0,this.object.width,this.object.height);
+        },
+        routerConfig : function(config){
+
+        },
+        activeScenes : function(index){
+            //for(var i=0,len=this.scenes.length;i<len;i++){
+            //    if(getActiveScenes==i)
+            var scene = this.scenes[index];
+            //}
+            return scene;
+        },
+        start: function(){
+           // console.time('world')
+            var scene = this.activeScene = this.activeScenes(0);
+            this.ctx.clearRect(0,0,this.object.width,this.object.height);
+            scene && scene._onRender && scene._onRender(this.ctx);
+            this.pointerListener.clear();
+           // console.timeEnd('world')
+        },
+       renderTo : function(context){
+            if(context){
+                context.appendChild(this.object);
+            }
+        }
+    });
+    
+    function ViewShow(w,h){
+        this.object = document.createElement('canvas');
+        this.object.width = w || 400;
+        this.object.height = h || 300;
+        this.ctx = this.object.getContext('2d');
+        this.input = {
+            pointer:{
+            
+            }
+        }
+        this.pointerListener = new reQ.InputListener(_poniterPrototype);
+        this._pointerSubscribe = new reQ.obSubscribe();
+        this.activeScene = null;
+        this.scenes = [];
+        this.router = [];
+        this.init();
+        this.pointerListener.start(this);
+    }
+    
+})();
+//reQ.baseDisplay
+;(function(){
+    reQ.class('reQ.baseDisplay',{
+        constructor:baseDisplay,
+        extends:reQ.obSubscribe,
+        setContext : function(ctx){
+            this.ctx = ctx;
+        },
+         installModules : function(){
+        
+        },
+         getContext : function(){
+            if(!this.ctx) new Error('ctx not found');
+            return this.ctx;
+        },
+         toString : function(ctx){
+            return this.opid+','+this.x+','+this.y+','+this.w+','+this.h;
+        },
+         _add : function(children){
+            children.object = this.object;
+             if(this.ctx){
+             children.ctx = this.ctx;
+             }
+            children.__parent = this;
+            children.addHandler &&  children.addHandler(children,this);
+        },
+         add : function(children){
+                this._add(children);
+                this.childrens.push(children);
+        },
+         getCanvas : function(){
+            var _par = this,canvas = null;
+            while(_par){
+                if(_par.canvas){
+                    canvas = _par.canvas;
+                    break;
+                }
+                _par = _par.__parent
+            }
+            return canvas;
+        },
+         hitTest : function(point){
+            var test = false;
+            if(this.x+this.w>point.x && this.x<point.x && this.y<point.y && this.y+this.h>point.y){
+                test = true;
+            }    
+            return test;
+        },
+         _triggerEvent : function(obj,e,type){
+            this.triggerEvent && this.triggerEvent(obj,e,type);
+            var len = this.childrens.length,i;
+            for(i=0;i<len;i++){
+                var displayer = this.childrens[i];
+                displayer._triggerEvent && displayer._triggerEvent(obj,e,type);
+            }
+        },
+         triggerEvent : function(obj,e,type){
+
+        },
+         clone : function(){
+
+        },
+        _clear:function(){
+            this.ctx.clearRect(this.x,this.y,this.w,this.h);
+        },
+        _sortChildrenByZ:function(){
+            if(this.childrens.length>0){
+                this.childrens.sort(function(a,b){
+                    return a.z-b.z;
+                });
+            }
+        },
+         _onRender : function(ctx){
+             this.ctx = ctx;
+             this._sortChildrenByZ();
+            this.willRender && this.willRender(ctx);
+            if(this.isShow){
+                this.onRender(ctx);
+                this.isRendered =true;
+                
+            }
+            var len = this.childrens.length,i;
+            for(i=0;i<len;i++){
+                var displayer = this.childrens[i];
+                displayer._onRender && displayer._onRender(ctx);
+            }
+             this.mountRendered && this.mountRendered(ctx);
+        },
+        _move:function(x,y){
+            if(this.isMove){
+                this.move(x,y);
+            }
+            var len = this.childrens.length,i;
+            for(i=0;i<len;i++){
+                var displayer = this.childrens[i];
+                displayer.isRelaMove &&  displayer._move && displayer._move(x,y);
+            }
+        },
+        addHandler:function(){
+            this.onInit();
+        },
+        onInit:function(){
+        },
+        move:function(x,y){
+             x = x||0;y = y||0;
+            this.x+=x;
+            this.y+=y;
+        },
+         onRender : function(ctx){
+        },
+        getRendered:function(){
+            return this.isRendered;
+        }
+    });
+    function baseDisplay(){
+        this.__doid = reQ.__doid++;
+        this.opid = 'opid_'+this.__doid;
+        this.events = new reQ.Events(this);
+        this.ctx = null;
+        this.x = 0;
+        this.y=0;
+        this.z = 0;
+        this.w = 0;
+        this.h = 0;
+        this._x = 0;
+        this._y=0;
+        this._w = 0;
+        this._h = 0;
+        this.opacity = 1;
+        this.scale = 1;
+        this.rotate = 0;
+        this.zIndex = 100;
+        this.__parent = null;
+        this.childrens = [];
+        this.isShow = true;
+        this.isRendered =false;
+        this.isMove = true;
+        this.isRelaMove = true;//是否跟随父元素移动
+    }
+})();
+
+    
+//reQ.Scense
+;(function(){
+    var Scenes = reQ.class('',{
+        constructor:function(ctx,canvas){
+            this.childrens = [];
+            this.ctx = ctx;
+            this.canvas = canvas;
+        },
+        extends:reQ.baseDisplay,
+    });
+    
+    reQ.Scenes = Scenes;
+})();
+ //reQ.Layer   
+;(function(){
+    var Layer = reQ.class('',{
+        constructor:function(){
+            this.childrens = [];
+        },
+        extends:reQ.baseDisplay,
+        add:function(sprite){
+            this._add(sprite);
+            sprite.layerX =this.x;
+            sprite.layerY =this.y;
+            this.childrens.push(sprite);
+        }
+    });
+    
+    reQ.Layer = Layer;
+})();
+  //reQ.Sprite  
+;(function(){
+    var Sprite = reQ.class('',{
+        constructor:function(){
+             this.layerX = 0;
+             this.layerY = 0;
+             this.childrens = [];
+        },
+        extends:reQ.baseDisplay,
+        setPos:function(){
+
+        }
+    });
+    
+    reQ.Sprite = Sprite;
+})();
+  //reQ.Rect  reQ.Line
+(function(){
+    var Rect = reQ.class('reQ.Rect',{
+        constructor:function(x,y,w,h){
+            this.setBounds({x:x,y:y,w:w,h:h});
+            this.paths = [];
+            this.fillStyle = '';
+            this.strokeStyle='#ccc';
+        },
+        extends:reQ.baseDisplay,
+        setBounds:function(bound){
+            this.x = bound.x;
+            this.y = bound.y;
+            this.w = bound.w;
+            this.h = bound.h;
+        },
+        setPaths:function(){
+            this.paths.push({x:this.x,y:this.y});
+            this.paths.push({x:this.x+this.w,y:this.y});
+            this.paths.push({x:this.x+this.w,y:this.y+this.h});
+            this.paths.push({x:this.x,y:this.y+this.h});
+        },
+        clean:function(){
+            this.ctx && this.ctx.clearRect(this.x,this.y-1,this.w+1,this.h+1);
+        },
+        onRender:function(ctx){
+            this.setPaths();
+            ctx = ctx||this.getContext();
+            this.ctx = ctx;
+            ctx.save();
+            ctx.fillStyle = this.fillStyle;
+            ctx.strokeStyle = this.strokeStyle;
+            ctx.lineWidth=1;
+            ctx.lineCap = 'square';
+//            ctx.beginPath();
+//            ctx.moveTo(this.paths[0].x+0.5,this.paths[0].y+0.5);
+//            for(var i=1,len=this.paths.length;i<len;i++){
+//                var point = this.paths[i];
+//                ctx.lineTo(point.x+0.5,point.y+0.5);
+//            }
+//            ctx.closePath();
+            
+           // ctx.fill();
+            if(this.fillStyle!=''){
+                ctx.fillRect(this.x,this.y,this.w,this.h);
+            }
+            if(this.strokeStyle!=''){
+               ctx.strokeRect(this.x,this.y,this.w,this.h);
+            }
+            ctx.restore();
+        }
+    });
+    
+    
+    
+     var Line = reQ.class('reQ.Line',{
+        constructor:function(x,y){
+            this.paths = [];
+            this.fillStyle = '#ccc';
+            this.strokeStyle = '#ccc';
+            this.ctxParams = {};
+        },
+        extends:reQ.baseDisplay,
+        addPath:function(path){
+            var args = [].slice.call(arguments),len=args.length;
+            if(len==1){
+                this.paths.push(args[0]);
+            }else{
+                for(var i=0;i<len;i++){
+                    this.paths.push(args[i]);
+                }
+            }
+        },
+        setPaths:function(paths){
+            this.paths = paths;
+        },
+         move:function(x,y){
+             x = x||0;y=y||0;
+            for(var i=0,len=this.paths.length;i<len;i++){
+                var point = this.paths[i];
+                point.x+=x;
+                point.y+=y;
+            }
+         },
+        onRender:function(ctx){
+            if(this.paths.length>0){
+                ctx = ctx||this.getContext();
+                ctx.save();
+                ctx.lineWidth=1;
+                ctx.lineCap = 'square';
+                ctx.fillStyle = this.fillStyle;
+                ctx.strokeStyle = this.strokeStyle;
+                ctx.beginPath();
+                
+                ctx.moveTo(this.paths[0].x,this.paths[0].y);
+                for(var i=1,len=this.paths.length;i<len;i++){
+                    var point = this.paths[i];
+                    ctx.lineTo(point.x,point.y);
+                }
+                ctx.stroke();
+                ctx.restore();
+            }
+        }
+    });
+    
+    //坐标轴
+    var Axio = reQ.class('reQ.Axio',{
+        constructor:function(){
+            this.paths = [];
+            this.fillStyle = '#000';
+            this.xArio = new reQ.Line();
+            this.yArio = new reQ.Line();
+            this.rows = 30;
+            this.columns = 30;
+            
+        },
+        extends:reQ.baseDisplay,
+        setBounds:function(bound){
+            this.x = bound.x;
+            this.y = bound.y;
+            this.w = bound.w;
+            this.h = bound.h;
+        },
+        onRender:function(ctx){
+            ctx = ctx||this.getContext();
+            this.xArio.addPath({x:this.x,y:this.y},{x:this.x+this.w,y:this.y});
+            this.yArio.addPath({x:this.x,y:this.y},{x:this.x,y:this.y-this.h});
+            this.xArio._onRender(ctx);
+            this.yArio._onRender(ctx);
+            
+        }
+    });
+})();
+    //reQ.Text
+;(function(){
+    //文本
+    var Text = reQ.class('reQ.Text',{
+        constructor:function(x,y,text){
+            this.paths = [];
+            this.x = x;
+            this.y = y;
+            //ctx.textBaseline = "top" || "hanging" || "middle" || "alphabetic" || "ideographic" || "bottom";
+            this.fillStyle = '#555';
+            this.fontSize = '14px';
+            this.textBaseline = 'top';
+            this.text = text ||'text';
+            this.fontFamily = 'serif'
+            this.align = 'start';
+            this.textWidth = 0;
+        },
+        extends:reQ.baseDisplay,
+        setBounds:function(bound){
+            this.x = bound.x;
+            this.y = bound.y;
+            this.w = bound.w;
+            this.h = bound.h;
+        },
+        onRender:function(ctx){
+            ctx = ctx||this.getContext();
+            this.textWidth=ctx.measureText(this.text);
+            ctx.save();
+            ctx.fillStyle = this.fillStyle;
+            ctx.textBaseline = this.textBaseline;
+            ctx.font = this.fontSize+' '+this.fontFamily;
+            ctx.textAlign = this.align;
+            ctx.fillText(this.text,this.x,this.y);
+            ctx.restore();
+        }
+    });
+})();
+    
+;(function(){
+    //dep reQ.Text
+    //表格
+    reQ.class('reQ.TableLabel',{
+        constructor:function(options){
+            this.paths = [];
+            this.fillStyle = '#999';
+            this.strokeStyle = '#ccc';
+            this.borderWidth = 1;
+            this.xAxis = []
+            this.yAxis = [];
+            this.series =[];
+            this.rowWidth = options.rowWidth || 80;//y轴方向宽度
+            this.columnWidth = options.columnWidth ||  30;//x轴方向宽度
+            this.offset = {left:0.1,right:0.1,top:0.35,bottom:0.2}
+            this.cells = [];
+            this.options = options || null;
+            this.canvas = null;
+            if(this.options){
+                this.handlerDatas(this.options);
+            }
+            this.activeChild = null;
+            this.changeSize();
+            this.oldX = 0;
+            this.oldY = 0;
+            this.StartPoint =  {x:0,y:0};
+            this.textW = {x:0,y:0};
+        },
+        extends:reQ.baseDisplay,
+        changeSize:function(){
+            var xdatas = this.series,xlen = xdatas.length;
+            var ydatas = this.yAxis[0].data,ylen = ydatas.length;
+            var _ww =  this.rowWidth*xlen,_wh = this.columnWidth*ylen;
+            this.w = _ww;
+            this.h = _wh;
+        },
+        mountRendered:function(){
+            var overflow = {x:0,y:0};
+            if(this.x<this.oldX){
+                overflow.x = Math.sqrt(Math.pow(this.x-this.oldX,2));
+                this.ctx.clearRect(this.x,this.oldY-this.columnWidth,overflow.x,this.columnWidth);
+            }
+            if(this.y<this.oldY){
+                overflow.y = Math.sqrt(Math.pow(this.y-this.oldY,2));
+                this.ctx.clearRect(this.oldX-this.textW.y-6,this.y,this.textW.y+6,overflow.y);
+            }
+        },
+        onInit:function(){
+            this.oldX = this.x;
+            this.oldY = this.y;
+            this.changeSize();
+            this.addLabel(this.ctx);
+        },
+        getDateDatas:function(month,start,count){
+            var _now = new Date();
+            start = start || 1;
+            var curmonth = _now.getMonth();
+            var monthCount = [31,29,31,30,31,30,31,31,30,31,30,31];
+            if(count>monthCount[month]){count=monthCount[curmonth]};
+            if(count<1){count=1};
+            var dates = [];
+            for(var i=start;i<count+1;i++){
+                dates.push(month+'-'+i);
+            }
+            return dates;
+        },
+        handlerDatas:function(options){
+            options = options || this.options;
+            this.xAxis = options.xAxis;
+            this.yAxis = options.yAxis;
+            this.series = options.series;
+            this.xDatas = this.getDateDatas(12,1,31,'MM-dd');
+        },
+        getRealPixel:function(val){
+            if((val>>0)%2==0){
+                return (val>>0)+0.5;
+            }
+            return val;
+        },
+        
+        addXLabel:function(ctx){
+            var xdatas = this.xDatas,xlen = xdatas.length;
+            var ydatas = this.yAxis[0].data,ylen = ydatas.length;
+            var _ww =  xlen*this.rowWidth,_wh = ylen*this.columnWidth;
+            //X轴标签
+            for(let i=0;i<=xlen;i++){
+                let move = i*this.rowWidth;
+                let start = {x:this.getRealPixel(this.x+move),y:this.getRealPixel(this.y)};
+                let end = {x:this.getRealPixel(this.x+move),y:this.getRealPixel(this.y+_wh)};
+                if(i<xlen){
+                    
+                    var text = this.xDatas[i];
+                    if(this.textW.x==0){
+                        this.textW.x= ctx.measureText(text).width;
+                 //       console.log(text,this.textW.x)
+                    }
+                    var rtext = new reQ.Text(start.x+(this.rowWidth-this.textW.x)/2,start.y-6,text);
+                    rtext.fontSize = '10px';
+                    rtext.fontFamily = 'Arial';
+                    rtext.textBaseline = 'bottom';
+                    rtext.fillStyle = '#777';
+                    rtext.__dir = 'son';
+                    this.add(rtext);
+                }
+                
+            }
+            
+        },
+        addYLabel:function(ctx){
+             var xdatas = this.xDatas,xlen = xdatas.length;
+            var ydatas = this.yAxis[0].data,ylen = ydatas.length;
+             var _ww =  xlen*this.rowWidth,_wh = ylen*this.columnWidth;
+            //Y轴标签
+            for(let j=0;j<=ylen;j++){
+                let move = j*this.columnWidth;
+                let start = {x:this.getRealPixel(this.x),y:this.getRealPixel(this.y+move)};
+                let end = {x:this.getRealPixel(this.x+_ww),y:this.getRealPixel(this.y+move)};
+                if(j<ylen){
+                    var text = ydatas[j];
+                   if(this.textW.y==0){
+                        this.textW.y= ctx.measureText(text).width;
+                   //     console.log(text,this.textW.y)
+                    }
+                     var rtext = new reQ.Text(start.x-10,start.y+(this.columnWidth)/2-6,text);
+                   // rtext.x = rtext.x;
+                    rtext.fillStyle = '#777';
+                    rtext.align = 'right';
+                    
+                    rtext.fontSize = '12px';
+                    rtext.__dir = 'hon';
+                    this.add(rtext);
+                }
+            } 
+        },
+        addLabel:function(ctx){
+           this.addYLabel(ctx);
+           this.addXLabel(ctx);
+        },
+        onRender:function(ctx){
+            ctx = ctx||this.getContext();
+            
+//            this.renderXy(ctx);
+//            this.renderLabel(ctx);
+        }
+    });
+    
+    //dep reQ.Text
+    //表格
+    reQ.class('reQ.TableGrid',{
+        constructor:function(options){
+            this.paths = [];
+            this.fillStyle = '#999';
+            this.strokeStyle = '#ccc';
+            this.borderWidth = 1;
+            this.xAxis = []
+            this.yAxis = [];
+            this.series =[];
+            this.rowWidth = options.rowWidth || 80;//y轴方向宽度
+            this.columnWidth = options.columnWidth ||  30;//x轴方向宽度
+            this.offset = {left:0.1,right:0.1,top:0.35,bottom:0.2}
+            this.cells = [];
+            this.options = options || null;
+            this.canvas = null;
+            if(this.options){
+                this.handlerDatas(this.options);
+            }
+            this.tooltip = new reQ.Tooltip();
+            this.tooltip.renderTo(document.body);
+            this.activeChild = null;
+            this.changeSize();
+            this.StartPoint =  {x:0,y:0};
+        },
+        extends:reQ.baseDisplay,
+        changeSize:function(){
+            var xdatas = this.series,xlen = xdatas.length;
+            var ydatas = this.yAxis[0].data,ylen = ydatas.length;
+            var _ww =  this.rowWidth*xlen,_wh = this.columnWidth*ylen;
+            this.w = _ww;
+            this.h = _wh;
+        },
+        mountRendered:function(){
+            var overflow = {x:0,y:0};
+            if(this.x<this.oldX){
+                overflow.x = Math.sqrt(Math.pow(this.x-this.oldX,2));
+                this.ctx.clearRect(this.x,this.oldY,overflow.x,this.h);
+            }
+            if(this.y<this.oldY){
+                overflow.y = Math.sqrt(Math.pow(this.y-this.oldY,2));
+                this.ctx.clearRect(this.oldX,this.y,this.w,overflow.y);
+            }
+            
+        },
+        triggerEvent:function(obj,e,type){
+            var self = this;
+          //  console.time('rerender');
+                if(e.type=='mousemove'){
+                    var len = self.childrens.length;
+                    var mouse = {x:e.clientX,y:e.clientY};
+                    var count = 0;
+                   // console.log(mouse,this.x,this.y,this.w,this.h);
+                  //  console.log(self.childrens);
+                    if(self.hitTest(mouse)){
+                        for(let i=0;i<=len;i++){
+                            var child = self.childrens[i];
+                            //获取表格TD
+                            if(child && child.___type && child.___type==='cell'){
+                                
+                                if(child.hitTest(mouse)){
+                                   // console.log(child);
+                                    self.tooltip.show();
+                                    self.tooltip.setPos(mouse.x+10,mouse.y+10);
+                                    self.tooltip.setContent([{
+                                        planGroup: '',
+                                        resource: '',
+                                        date: '',
+                                        resourceType: '',
+                                        resourceAvailableTime: '',
+                                        resourceWorkingTime: '',
+                                        val: ''
+                                    }]);
+                                    if(child.childrens.length>0){
+                                        var childData = child.childrens[0];
+                                        if(child.data){
+                                            self.tooltip.setContent([child.data]);
+                                        }else{
+                                            self.tooltip.hide();
+                                        }
+                                    }
+                                    child.clean();
+                                    //child.oldfillStyle = child.fillStyle;
+                                    child.fillStyle='#ddd';
+                                    child._onRender(this.ctx);
+                                    child.isHit = true;
+                                }else{
+                                    if(child && child.isHit == true){
+                                        child.clean();
+                                        child.isHit = false;
+                                        child.fillStyle=child.oldfillStyle;
+                                        child._onRender(this.ctx);
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }else{
+                        //if(e.type=='mouseout'){
+                            self.tooltip.hide();
+                       // }
+                    }
+                }
+            if(e.type=='mouseout'){
+                self.tooltip.hide();
+            }
+              //  console.timeEnd('rerender');
+        },
+        addCells:function(){
+            var xdatas = this.xDatas,xlen = xdatas.length;
+            var ydatas = this.yAxis[0].data,ylen = ydatas.length;
+            for(let i=0;i<xlen;i++){
+                var series = this.series[i];
+ //console.log(i,this.series,this.series[i]);
+                for(let j=0;j<ylen;j++){
+                    var idata = xdatas[i],jdata = ydatas[j];
+                    
+                    let imove = i*this.rowWidth;
+                    let jmove = j*this.columnWidth;
+                    let istart = {x:this.getRealPixel(this.x+imove),y:this.getRealPixel(this.y)};
+                    let jstart = {x:this.getRealPixel(this.x),y:this.getRealPixel(this.y+jmove)};
+                   
+                    var _cellInfo = {
+                        x:istart.x+1,
+                        y:jstart.y+1,
+                        w:this.rowWidth-2,
+                        h:this.columnWidth-2,
+                    };
+                    var td = new reQ.Rect(_cellInfo.x,_cellInfo.y,_cellInfo.w,_cellInfo.h);
+                    td.___type = 'cell';
+                    td.strokeStyle='';
+                    if(j%2!=0){
+                        td.fillStyle='#f5f5f5';//隔行变色
+                    }
+                    td.oldfillStyle=td.fillStyle;
+                    this.add(td);
+                    
+                    if(series && series[j]){
+                        var cell = new reQ.Rect(
+                            _cellInfo.x,
+                            _cellInfo.y+_cellInfo.h/4,
+                            this.rowWidth*(series[j].val>100?1:series[j].val/100)-2,
+                            this.columnWidth/2,
+                        );
+                        cell.strokeStyle='';
+                        cell.fillStyle=(series[j].val>100?'#ea3131':'#62acd8');
+                        cell.strokeStyle='';
+                        td.data = series[j];
+                        td.add(cell);
+                    }
+                    
+                }  
+            }
+        },
+        onInit:function(){
+            this.changeSize();
+            this.addXy(this.ctx);
+            this.addCells();
+            this.events.onpointdown(this.dragStart);
+            this.events.onpointmove(this.dragMove);
+            this.events.onpointup(this.dragUp);
+            this.events.onpointmove(this.triggerEvent);
+        },
+        
+        getDateDatas:function(month,start,count){
+            var _now = new Date();
+            start = start || 1;
+            var curmonth = _now.getMonth();
+            var monthCount = [31,29,31,30,31,30,31,31,30,31,30,31];
+            if(count>monthCount[month]){count=monthCount[curmonth]};
+            if(count<1){count=1};
+            var dates = [];
+            for(var i=start;i<count+1;i++){
+                dates.push(month+'-'+i);
+            }
+            return dates;
+        },
+        handlerDatas:function(options){
+            options = options || this.options;
+            this.xAxis = options.xAxis;
+            this.yAxis = options.yAxis;
+            this.series = options.series;
+            this.xDatas = this.getDateDatas(12,1,31,'MM-dd');
+        },
+        getRealPixel:function(val){
+            if((val>>0)%2==0){
+                return (val>>0)+0.5;
+            }
+            return val;
+        },
+        move:function(x,y){
+             x = x||0;y = y||0;
+            this.x+=x;
+            this.y+=y;
+        },
+       dragStart:function(input,e){
+            var self = this;
+            input.isDown = true;
+            if( input.isMove==true)return false;
+            var mouse =  {x:e.clientX,y:e.clientY};
+            self.StartPoint =  {x:e.clientX,y:e.clientY};
+        },
+        dragMove:function(input,e){
+            var self = this;
+            if(!input.isDown)return;
+            input.isMove=true;
+        },
+        
+        dragUp:function(input,e){
+            var self = this;
+            input.isDown = false;
+            input.isMove = false;
+            var mouse = {x:e.clientX,y:e.clientY};
+            var _bound = {x:0,y:0};
+            var drg = {x:0,y:0};
+            var dir = 'hon';
+             var limit = {x:mouse.x-self.StartPoint.x,y:mouse.y-self.StartPoint.y};
+            var gridSize = {w:this.object.object.width-this.oldX,h:this.object.object.height-this.oldY};
+           // console.log(limit)
+            this.object.pointerListener.clear();
+            if(Math.pow(limit.x,2)>Math.pow(limit.y,2)){
+                _bound.x = limit.x;//移动时的移动距离
+                drg.x = this.x+limit.x;//左移动 limit＜0
+              //  console.log(limit)
+                if(limit.x<0){//左拖动
+                    var maxX = (this.w-gridSize.w); //可到达的最左边
+                    var dx = Math.sqrt(Math.pow(drg.x,2));
+                    if(dx+this.oldX>maxX){
+                        var rex = maxX+this.x-this.oldX;
+                        if(rex>0){
+                            _bound.x=-rex-6;
+                        }else{
+                            _bound.x=0;
+                        }
+                     //   console.log(rex);
+                    }
+                }else if(limit.x>0){//右拖动
+                    if(drg.x>this.oldX){
+                        var rex = Math.sqrt(Math.pow(this.oldX-this.x,2));
+                        if(rex>0){
+                            _bound.x=rex;
+                        }else{
+                            _bound.x=0;
+                        }
+                    }
+                    
+                }
+            }
+            else if(Math.pow(limit.x,2)<Math.pow(limit.y,2)){
+                _bound.y = limit.y;dir='son';//移动时的移动距离
+                 drg.y = this.y+limit.y;//左移动 limit＜0
+                //console.log(limit)
+                if(limit.y<0){//左拖动
+                    var maxY = (this.h-gridSize.h); //可到达的最左边
+                    var dy = Math.sqrt(Math.pow(drg.y,2));
+                    if(dy+this.oldY>maxY){
+                        var rex = maxY+this.y-this.oldY;
+                        if(rex>0){
+                            _bound.y=-rex-6;
+                        }else{
+                            _bound.y=0;
+                        }
+                      //  console.log(rex);
+                    }
+                }else if(limit.y>0){//右拖动
+                    if(drg.y>this.oldY){
+                        var rex = Math.sqrt(Math.pow(this.oldY-this.y,2));
+                        if(rex>0){
+                            _bound.y=rex;
+                        }else{
+                            _bound.y=0;
+                        }
+                    }
+                    
+                }
+                
+            }
+            if(_bound.x!=0 || _bound.y!=0){
+                if(_bound.x>0){
+
+                }
+                if(dir=='hon'){//横向拖动时的操作
+                    self.__parent.moveHon();
+                }else{//竖向拖动时的操作
+                    self.__parent.moveSon();
+                }
+                self.__parent._move(_bound.x,_bound.y);
+                self.object.clearView();
+                
+                self.__parent._onRender(this.getContext());
+                //self.resetMoveChilds();
+                    
+                self.__parent.resetMoveChilds();
+                
+            }
+        },
+        addXy:function(ctx){
+            var xdatas = this.xDatas,xlen = xdatas.length;
+            var ydatas = this.yAxis[0].data,ylen = ydatas.length;
+            var _ww =  xlen*this.rowWidth,_wh = ylen*this.columnWidth;
+            this.w = _ww;this.h = _wh;
+         //   console.log(this.childrens)
+            //竖线
+            for(let i=0;i<=xlen;i++){
+                let move = i*this.rowWidth;
+                let start = {x:this.getRealPixel(this.x+move),y:this.getRealPixel(this.y)};
+                let end = {x:this.getRealPixel(this.x+move),y:this.getRealPixel(this.y+_wh)};
+                
+                let line = new reQ.Line(start.x,start.y);
+                line.strokeStyle = this.strokeStyle;
+                line.addPath(start,end);
+                this.add(line);
+            }
+            //横线
+            for(let j=0;j<=ylen;j++){
+                let move = j*this.columnWidth;
+                let start = {x:this.getRealPixel(this.x),y:this.getRealPixel(this.y+move)};
+                let end = {x:this.getRealPixel(this.x+_ww),y:this.getRealPixel(this.y+move)};
+                
+                let line = new reQ.Line(start.x,start.y);
+                line.strokeStyle = this.strokeStyle;
+                line.addPath(start,end);
+                this.add(line);
+            } 
+        }
+    });
+    
+    //dep reQ.Text
+    //表格
+    reQ.class('reQ.dragTable',{
+        constructor:function(options){
+            this.paths = [];
+            this.fillStyle = '#999';
+            this.strokeStyle = '#ccc';
+            this.borderWidth = 1;
+            this.xAxis = []
+            this.yAxis = [];
+            this.series =[];
+            this.rowWidth = options.rowWidth || 80;//y轴方向宽度
+            this.columnWidth = options.columnWidth ||  30;//x轴方向宽度
+            this.offset = {left:0.1,right:0.1,top:0.35,bottom:0.2}
+            this.cells = [];
+            this.options = options || null;
+            this.canvas = null;
+            if(this.options){
+                this.handlerDatas(this.options);
+            }
+            this.activeChild = null;
+            this.changeSize();
+            this.StartPoint =  {x:0,y:0};
+        },
+        extends:reQ.baseDisplay,
+        changeSize:function(){
+            var xdatas = this.series,xlen = xdatas.length;
+            var ydatas = this.yAxis[0].data,ylen = ydatas.length;
+            var _ww =  this.rowWidth*xlen,_wh = this.columnWidth*ylen;
+            this.w = _ww;
+            this.h = _wh;
+        },
+        onInit:function(){
+            this.canvas = this.getCanvas();
+            this.$label = new reQ.TableLabel(this.options);
+            this.$label.x = this.x+100;
+            this.$label.y = this.y+this.columnWidth;
+            this.$label.z = 2;
+            this.add(this.$label);
+            this.$grid = new reQ.TableGrid(this.options);
+            this.$grid.oldX = this.$grid.x = this.$label.x;
+            this.$grid.oldY = this.$grid.y = this.$label.y;
+            this.$grid.z = 1;
+            this.add(this.$grid);
+//            this.events.onpointdown(this.dragStart);
+//            this.events.onpointmove(this.dragMove);
+//            this.events.onpointmove(this.triggerEvent);
+//            this.events.onpointup(this.dragUp);
+            this.changeSize();
+        },
+        getDateDatas:function(month,start,count){
+            var _now = new Date();
+            start = start || 1;
+            var curmonth = _now.getMonth();
+            var monthCount = [31,29,31,30,31,30,31,31,30,31,30,31];
+            if(count>monthCount[month]){count=monthCount[curmonth]};
+            if(count<1){count=1};
+            var dates = [];
+            for(var i=start;i<count+1;i++){
+                dates.push(month+'-'+i);
+            }
+            return dates;
+        },
+        handlerDatas:function(options){
+            options = options || this.options;
+            this.xAxis = options.xAxis;
+            this.yAxis = options.yAxis;
+            this.series = options.series;
+            this.xDatas = this.getDateDatas(12,1,31,'MM-dd');
+        },
+        getRealPixel:function(val){
+            if((val>>0)%2==0){
+                return (val>>0)+0.5;
+            }
+            return val;
+        },
+        clearTableTd:function(){
+            
+            this.childrens = this.childrens.filter(function(td){
+                if(td.___type=='cell'){
+                    return false;
+                }
+            });
+        },
+        
+        resetMoveChilds:function(){
+            var self = this,len=self.$label.childrens.length;
+            for(let i=0;i<=len;i++){
+                var child = self.$label.childrens[i];
+                if(child && child.__dir){
+                    child.isMove = true;
+                }
+            }
+        },
+        moveHon:function(){
+            var self = this,len=self.$label.childrens.length;
+            for(let i=0;i<=len;i++){
+                var child = self.$label.childrens[i];
+                if(child && child.__dir=='hon'){
+                    child.isMove = false;
+                }
+            }
+        },
+        moveSon:function(){
+            var self = this,len=self.$label.childrens.length;
+            for(let i=0;i<=len;i++){
+                var child = self.$label.childrens[i];
+                if(child && child.__dir=='son'){
+                    child.isMove = false;
+                }
+            }
+        }
+        
+    });
+})();
+    
+    //reQ.Tooltip
+;(function(){
+    var Tooltip = reQ.class('',{
+        constructor:function(options){
+            this.object = document.createElement('div');
+            this.options = options;
+            this.init();
+        },
+        init:function(){
+            
+            this.setStyles({'font-size':'14px','padding':'10px','color':'#ccc','left':0,'top':0,'z-index':10,'position':'absolute','background-color':'rgba(0,0,0,.8)','border-radius':'6px'});
+            this.hide();
+        },
+        setContent:function(datas){
+            var keymaps = [{key:'planGroup',name:'planGroup',value:'planGroup'},{key:'date',name:'date',value:'date'},{key:'val',name:'val',value:'val'}]
+            var _tmpl = '<p><span style="padding-right:10px;">{{name}}</span>：<span>{{value}}</span></p>';
+            var htmls = [];
+            datas = datas || this.options.datas;
+            for(var i=0,len=datas.length;i<len;i++){
+                var item = datas[i];
+                
+                for(var k in item){
+                    if(item.hasOwnProperty(k)){
+                        var html = _tmpl;
+                        var flag = false;
+                        for(var j=0, jlen=keymaps.length;j<jlen;j++){
+                            if(keymaps[j].key==k){
+                                var reg = new RegExp('{{name}}','g');
+                                html=html.replace(reg,k);
+                                html=html.replace(/{{value}}/g,item[k]);
+                                flag = true;
+                            }
+                        }
+                        if(flag){
+                            htmls.push(html);
+                        }
+                    }
+                    
+                }
+                
+            }
+            this.object.innerHTML = htmls.join('');
+        },
+        setPos:function(left,top){
+            this.object.style.transform='translate('+left+'px,'+top+'px)';
+            //this.object.style.top=top+'px';
+        },
+        show:function(){
+            this.object.style.display = 'block';
+        },
+        hide:function(){
+            this.object.style.display = 'none';
+        },
+        setStyles:function(styles){
+            for(var i in styles){
+                this.object.style[i] = styles[i];
+            }
+        },
+        renderTo:function(context){
+            if(context){
+                context.appendChild(this.object);
+            }
+        }
+    });
+    
+    reQ.Tooltip = Tooltip;
+})();    
+
+    
+//;(function(){
+    //test class
+    var option = {
+        color: ['#3398DB'],
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                axisTick: {
+                    alignWithLabel: true
+                }
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                data: ['PDAJSDQ101', 'PDAJSDQ102', 'PDAJSDQ103', 'PDAJSDQ104', 'PDAJSDQ105', 'PDAJSDQ106', 'PDAJSDQ107', 'PDAJSDQ108', 'PDAJSDQ109', 'PDAJSDQ110'],
+            }
+        ],
+        series : data
+    };
+    
+    var winSize = {w:500,h:250}
+
+    var world = new reQ.World(winSize.w,winSize.h,document.getElementsByTagName('body')[0]);
+    
+    console.time('render');
+    var scense = new reQ.Scenes();
+    world.scenesManager.addScenes(scense);
+    var layer = new reQ.Layer();
+    scense.add(layer);
+    console.log(world)
+//    var rect = new reQ.Rect(40,40,100,30);
+//    rect.fillStyle='#f00';
+//    var xyAx = new reQ.Axio();
+//    xyAx.setBounds({x:50,y:250,w:600,h:200});
+//     xyAx.setBounds({x:50,y:250,w:600,h:200});
+//     layer.add(rect);
+ //   layer.add(xyAx);
+    option.columnWidth = 30;
+    option.rowWidth = 50;
+    var table = new reQ.dragTable(option);
+    
+   // table.x = 100;table.y=50;
+    
+    layer.add(table);
+    
+   console.timeEnd('render');
+
+    world.start();
+    
+//})()
+</script>
+</body>
+</html>
